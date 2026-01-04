@@ -14,15 +14,12 @@ import java.util.UUID;
 @Getter
 public class Order {
 
-    private final UUID orderId;
     private final String clientId;
     private final String symbol;
     private final OrderSide side;
     private final OrderType type;
     private final long quantity;
     private final BigDecimal price;
-    private final OrderStatus status;
-    private final Instant createdAt;
 
     public Order(
             UUID orderId,
@@ -36,14 +33,11 @@ public class Order {
             Instant createdAt
     ) {
         // business invariants here
-        this.orderId = Objects.requireNonNull(orderId);
         this.clientId = Objects.requireNonNull(clientId);
         this.symbol = Objects.requireNonNull(symbol);
         this.side = side;
         this.type = type;
         this.quantity = quantity;
         this.price = price;
-        this.status = status;
-        this.createdAt = createdAt;
     }
 }
