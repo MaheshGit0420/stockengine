@@ -4,6 +4,7 @@ package com.mahesh.stockengine.domain;
 import com.mahesh.stockengine.enums.OrderSide;
 import com.mahesh.stockengine.enums.OrderStatus;
 import com.mahesh.stockengine.enums.OrderType;
+import com.mahesh.stockengine.mappers.OrderRequestDTO;
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -20,24 +21,41 @@ public class Order {
     private final OrderType type;
     private final long quantity;
     private final BigDecimal price;
+    private final UUID orderId;
+    private final Instant createdAt;
+    private final OrderStatus status;
 
     public Order(
-            UUID orderId,
             String clientId,
             String symbol,
             OrderSide side,
             OrderType type,
             long quantity,
-            BigDecimal price,
-            OrderStatus status,
-            Instant createdAt
+            BigDecimal price
     ) {
         // business invariants here
+        this.orderId = UUID.randomUUID();
         this.clientId = Objects.requireNonNull(clientId);
         this.symbol = Objects.requireNonNull(symbol);
         this.side = side;
         this.type = type;
         this.quantity = quantity;
         this.price = price;
+        this.status = OrderStatus.NEW;
+        this.createdAt = Instant.now();
+
+    }
+
+
+    public static Order createNew(OrderRequestDTO dto) {
+
+        return new Order(
+                dto.clientId(),
+                dto.symbol(),
+                dto.side(),
+                dto.type(),
+                dto.quantity(),
+                dto.price()
+        );
     }
 }

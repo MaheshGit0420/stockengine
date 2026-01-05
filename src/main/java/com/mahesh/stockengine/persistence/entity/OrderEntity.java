@@ -17,7 +17,7 @@ import java.util.UUID;
 @Table(name = "orders")
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class OrderEntity {
 
     @Id
