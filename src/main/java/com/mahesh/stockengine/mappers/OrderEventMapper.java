@@ -7,7 +7,7 @@ public final class OrderEventMapper {
 
     private OrderEventMapper() {}
 
-    public static OrderCreatedEvent toCreatedEvent(Order order) {
+    public OrderCreatedEvent toCreatedEvent(Order order) {
         return new OrderCreatedEvent(
                 order.getOrderId(),
                 order.getClientId(),

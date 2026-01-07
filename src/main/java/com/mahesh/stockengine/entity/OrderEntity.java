@@ -1,4 +1,4 @@
-package com.mahesh.stockengine.persistence.entity;
+package com.mahesh.stockengine.entity;
 
 import com.mahesh.stockengine.enums.OrderSide;
 import com.mahesh.stockengine.enums.OrderStatus;

@@ -1,7 +1,7 @@
-package com.mahesh.stockengine.persistence.mapper;
+package com.mahesh.stockengine.mappers;
 
 import com.mahesh.stockengine.domain.Order;
-import com.mahesh.stockengine.persistence.entity.OrderEntity;
+import com.mahesh.stockengine.entity.OrderEntity;
 import org.springframework.stereotype.Component;
 
 @Component

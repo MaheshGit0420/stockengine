@@ -1,6 +1,6 @@
-package com.mahesh.stockengine.persistence.repository;
+package com.mahesh.stockengine.repository;
 
-import com.mahesh.stockengine.persistence.entity.OrderEntity;
+import com.mahesh.stockengine.entity.OrderEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

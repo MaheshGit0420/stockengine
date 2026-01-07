@@ -28,7 +28,7 @@ public class OrderController {
     public UUID postOrder(@Valid @RequestBody OrderRequestDTO orderRequestDTO) {
 
         System.out.println(orderRequestDTO.type());
-        orderEventProducer.publishOrder("TEST", "Testing topic publishing");
+        // orderEventProducer.publish("TEST", "Testing topic publishing");
         return orderService.createNew(orderRequestDTO);
         // return ResponseEntity.status(HttpStatus.CREATED).build();
     }
