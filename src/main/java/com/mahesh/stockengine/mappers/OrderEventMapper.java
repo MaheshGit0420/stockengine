@@ -2,7 +2,9 @@ package com.mahesh.stockengine.mappers;
 
 import com.mahesh.stockengine.domain.Order;
 import com.mahesh.stockengine.messaging.events.OrderCreatedEvent;
+import org.springframework.stereotype.Component;
 
+@Component
 public final class OrderEventMapper {
 
     private OrderEventMapper() {}
