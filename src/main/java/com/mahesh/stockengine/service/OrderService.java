@@ -1,15 +1,12 @@
 package com.mahesh.stockengine.service;
 
-import com.mahesh.stockengine.domain.Order;
 import com.mahesh.stockengine.mappers.OrderEventMapper;
-import com.mahesh.stockengine.mappers.OrderRequestDTO;
-import com.mahesh.stockengine.messaging.OrderEventProducer;
+import com.mahesh.stockengine.dto.OrderRequestDTO;
+import com.mahesh.stockengine.messaging.producer.OrderEventProducer;
 import com.mahesh.stockengine.messaging.events.OrderCreatedEvent;
 import com.mahesh.stockengine.entity.OrderEntity;
 import com.mahesh.stockengine.mappers.OrderEntityMapper;
 import com.mahesh.stockengine.repository.OrderRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -32,11 +29,18 @@ public class OrderService {
         this.orderEventProducer = orderEventProducer;
     }
 
-    public UUID createNew(OrderRequestDTO dto) {
-        Order order = Order.createNew(dto);
-        OrderCreatedEvent event = orderEventMapper.toCreatedEvent(order);
-        orderEventProducer.publish(event);
-        OrderEntity entity = orderEntityMapper.toEntity(order);
-        return orderRepository.save(entity).getOrderId();
+    public void createNew(OrderRequestDTO dto) {
+        // Order order = Order.createNew(dto);
+        // OrderCreatedEvent event = orderEventMapper.toCreatedEvent(order);
+
+        orderEventProducer.publish(dto);
+        // OrderEntity entity = orderEntityMapper.toEntity(order);
+        // return orderRepository.save(entity).getOrderId();
     }
+
+//    @KafkaListener(topics = "order-events", groupId = "stock-engine")
+//    public void consumeEvent(OrderCreatedEvent order) {
+////        log.info("Received order: {}", order);
+//        System.out.println("Received order: " + order);
+//    }
 }

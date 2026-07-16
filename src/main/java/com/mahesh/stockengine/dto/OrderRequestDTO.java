@@ -1,4 +1,4 @@
-package com.mahesh.stockengine.mappers;
+package com.mahesh.stockengine.dto;
 
 import com.mahesh.stockengine.enums.OrderSide;
 import com.mahesh.stockengine.enums.OrderType;

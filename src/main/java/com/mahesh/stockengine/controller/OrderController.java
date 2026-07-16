@@ -1,8 +1,8 @@
 package com.mahesh.stockengine.controller;
 
 
-import com.mahesh.stockengine.mappers.OrderRequestDTO;
-import com.mahesh.stockengine.messaging.OrderEventProducer;
+import com.mahesh.stockengine.dto.OrderRequestDTO;
+import com.mahesh.stockengine.messaging.producer.OrderEventProducer;
 import com.mahesh.stockengine.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,8 +25,8 @@ public class OrderController {
     }
 
     @PostMapping
-    public UUID postOrder(@Valid @RequestBody OrderRequestDTO orderRequestDTO) {
+    public void postOrder(@Valid @RequestBody OrderRequestDTO orderRequestDTO) {
 
-        return orderService.createNew(orderRequestDTO);
+        orderService.createNew(orderRequestDTO);
     }
 }
